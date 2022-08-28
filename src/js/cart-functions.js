@@ -36,12 +36,16 @@ exports.calculateTotal = calculateTotal;
 
 
 
-/*const addItem = (itemsArray, name, price) => {
-    itemsArray.unshift({name: name, price: price});
+const addItem = (itemsArray, name, price) => {
+    const object = {};
+    object.name = name;
+    object.price = price;
+
+    itemsArray.push(object);
     return itemsArray;
 }
 
-exports.addItem = addItem;*/
+exports.addItem = addItem;
 
 
 const removeItem = (itemsArray, index) => {

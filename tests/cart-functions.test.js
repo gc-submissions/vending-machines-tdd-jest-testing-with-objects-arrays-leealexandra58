@@ -1,4 +1,4 @@
-const { calculateChange, isSufficientPayment, calculateTotal, removeItem } = require("../src/js/cart-functions")
+const { calculateChange, isSufficientPayment, calculateTotal, addItem, removeItem } = require("../src/js/cart-functions")
 
 
 
@@ -45,7 +45,6 @@ describe("calculate change tests", () => {
 
     // Assert
     expect(result).toBeCloseTo(0.95)
-
 
   });
 
@@ -157,9 +156,23 @@ describe("calculateTotal tests", () => {
 });
 
 
+describe("add item tests", () => {
+  test("add item with the name 'Beans' with the price of 3 as an object to the array", () => {
+    // Arrange
+    let itemsArray = [];
+    let name = "Beans";
+    let price = 3;
+    
+    
+    // Act
+    let result = addItem(itemsArray, name, price);
 
-/*describe("add item tests", () => {
-  test("add item with the name Sugar with the price of 2 as an object to the array", () => {
+    // Assert
+    expect(result).toEqual([{ name: "Beans", price: 3 }]);
+
+  });
+
+  test("add item with the name 'Sugar' with the price of 2 as an object to the array", () => {
     // Arrange
     let itemsArray = [{ name: "Beans", price: 3 }];
     let name = "Sugar";
@@ -170,10 +183,25 @@ describe("calculateTotal tests", () => {
     let result = addItem(itemsArray, name, price);
 
     // Assert
-    expect(result).toEqual([{ name: "Beans", price: 3 }, { name: "Sugar", price: 2}]);
+    expect(result).toEqual([{ name: "Beans", price: 3 }, { name: "Sugar", price: 2 }]);
 
   });
-});*/
+
+  test("add item with the name 'Beans' with the price of 3 as an object to the array", () => {
+    // Arrange
+    let itemsArray = [{ name: "Beans", price: 3 }, { name: "Sugar", price: 2 }, { name: "Eggs", price: 4 }];
+    let name = "Bread";
+    let price = 2.50;
+        
+    // Act
+    let result = addItem(itemsArray, name, price);
+
+    // Assert
+    expect(result).toEqual([{ name: "Beans", price: 3 }, { name: "Sugar", price: 2 }, { name: "Eggs", price: 4 }, { name: "Bread", price: 2.50 }]);
+
+  });
+
+});
 
 
 
